@@ -1,1 +1,1 @@
-## Simple project using Angular, web Components and Micro Front End
+## Simple project using Angular 9, web Components and Micro Front End
