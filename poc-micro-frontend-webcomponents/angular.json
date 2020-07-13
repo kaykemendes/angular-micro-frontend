@@ -1,0 +1,359 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "poc-micro-frontend-webcomponents": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/poc-micro-frontend-webcomponents",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "options": {
+            "browserTarget": "poc-micro-frontend-webcomponents:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "poc-micro-frontend-webcomponents:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "poc-micro-frontend-webcomponents:build"
+          }
+        },
+        "test": {
+          "builder": "ngx-build-plus:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "tsconfig.app.json",
+              "tsconfig.spec.json",
+              "e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "poc-micro-frontend-webcomponents:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "poc-micro-frontend-webcomponents:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "administrative": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/administrative",
+      "sourceRoot": "projects/administrative/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/administrative",
+            "index": "projects/administrative/src/index.html",
+            "main": "projects/administrative/src/main.ts",
+            "polyfills": "projects/administrative/src/polyfills.ts",
+            "tsConfig": "projects/administrative/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/administrative/src/favicon.ico",
+              "projects/administrative/src/assets"
+            ],
+            "styles": [
+              "projects/administrative/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/administrative/src/environments/environment.ts",
+                  "with": "projects/administrative/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "options": {
+            "browserTarget": "administrative:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "administrative:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "administrative:build"
+          }
+        },
+        "test": {
+          "builder": "ngx-build-plus:karma",
+          "options": {
+            "main": "projects/administrative/src/test.ts",
+            "polyfills": "projects/administrative/src/polyfills.ts",
+            "tsConfig": "projects/administrative/tsconfig.spec.json",
+            "karmaConfig": "projects/administrative/karma.conf.js",
+            "assets": [
+              "projects/administrative/src/favicon.ico",
+              "projects/administrative/src/assets"
+            ],
+            "styles": [
+              "projects/administrative/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/administrative/tsconfig.app.json",
+              "projects/administrative/tsconfig.spec.json",
+              "projects/administrative/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/administrative/e2e/protractor.conf.js",
+            "devServerTarget": "administrative:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "administrative:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "financial": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/financial",
+      "sourceRoot": "projects/financial/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/financial",
+            "index": "projects/financial/src/index.html",
+            "main": "projects/financial/src/main.ts",
+            "polyfills": "projects/financial/src/polyfills.ts",
+            "tsConfig": "projects/financial/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/financial/src/favicon.ico",
+              "projects/financial/src/assets"
+            ],
+            "styles": [
+              "projects/financial/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/financial/src/environments/environment.ts",
+                  "with": "projects/financial/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "options": {
+            "browserTarget": "financial:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "financial:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "financial:build"
+          }
+        },
+        "test": {
+          "builder": "ngx-build-plus:karma",
+          "options": {
+            "main": "projects/financial/src/test.ts",
+            "polyfills": "projects/financial/src/polyfills.ts",
+            "tsConfig": "projects/financial/tsconfig.spec.json",
+            "karmaConfig": "projects/financial/karma.conf.js",
+            "assets": [
+              "projects/financial/src/favicon.ico",
+              "projects/financial/src/assets"
+            ],
+            "styles": [
+              "projects/financial/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/financial/tsconfig.app.json",
+              "projects/financial/tsconfig.spec.json",
+              "projects/financial/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/financial/e2e/protractor.conf.js",
+            "devServerTarget": "financial:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "financial:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "poc-micro-frontend-webcomponents"
+}
